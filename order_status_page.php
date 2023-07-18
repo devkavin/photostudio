@@ -38,7 +38,7 @@ include 'order_status_table.php';
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($reservations as $reservation): ?>
+                        <?php foreach ($reservations as $reservation) : ?>
                             <tr>
                                 <td class="text-center">
                                     <?php echo $reservation['date']; ?>
@@ -59,22 +59,19 @@ include 'order_status_table.php';
                                     <?php echo $reservation['status']; ?>
                                 </td>
                                 <td class="text-center">
-                                    <?php if ($reservation['status'] === 'Pending'): ?>
+                                    <?php if ($reservation['status'] === 'Pending') : ?>
                                         <div class="d-flex justify-content-center">
                                             <div class="col-6 pr-1">
-                                                <button class="btn btn-danger btn-cancel btn-block"
-                                                    data-reservation-id="<?php echo $reservation['id']; ?>">Cancel</button>
+                                                <button class="btn btn-danger btn-cancel btn-block" data-reservation-id="<?php echo $reservation['id']; ?>">Cancel</button>
                                             </div>
                                             <div class="col-6 pl-1">
-                                                <button class="btn btn-success btn-print btn-block"
-                                                    data-reservation-id="<?php echo $reservation['id']; ?>">Print Bill</button>
+                                                <button class="btn btn-success btn-print btn-block" data-reservation-id="<?php echo $reservation['id']; ?>">Print Bill</button>
                                             </div>
                                         </div>
-                                    <?php elseif ($reservation['status'] === 'Reserved'): ?>
+                                    <?php elseif ($reservation['status'] === 'Reserved') : ?>
                                         <div class="d-flex justify-content-center">
                                             <div class="col-12">
-                                                <button class="btn btn-success btn-print btn-block"
-                                                    data-reservation-id="<?php echo $reservation['id']; ?>">Print Bill</button>
+                                                <button class="btn btn-success btn-print btn-block" data-reservation-id="<?php echo $reservation['id']; ?>">Print Bill</button>
                                             </div>
                                         </div>
                                     <?php endif; ?>
@@ -89,53 +86,7 @@ include 'order_status_table.php';
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <!-- JavaScript code to handle reservation cancellation -->
-    <script>
-        $(document).ready(function () {
-            // Handle cancel button click
-            $('.btn-cancel').click(function () {
-                var reservationId = $(this).data('reservation-id');
-
-                // Show a confirmation prompt
-                var confirmCancel = confirm("Are you sure you want to cancel this reservation?");
-
-                if (confirmCancel) {
-
-                    // Send AJAX request to cancel the reservation
-                    $.ajax({
-                        url: 'cancel_reservation.php',
-
-                        method: 'POST',
-                        data: {
-                            reservationId: reservationId
-                        },
-                        success: function (response) {
-                            // Update the UI or display a success message
-                            alert(response);
-                            // refresh the page
-                            location.reload();
-                        }
-                    });
-                }
-            });
-        });
-    </script>
-    <script>
-        $(document).ready(function () {
-            // Handle print button click
-            $('.btn-print').click(function () {
-                var reservationId = $(this).data('reservation-id');
-
-                // Open a new window with the print preview page
-                var printWindow = window.open('print_preview.php?reservationId=' + reservationId, '_blank');
-                // close window after print
-                // print the page
-                printWindow.print();
-                printWindow.onafterprint = function () {
-                    printWindow.close();
-                };
-            });
-        });
-    </script>
+    <script src="order_status_script.js"></script>
 
 
 
