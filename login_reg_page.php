@@ -9,25 +9,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var loader = document.querySelector(".loader");
-            var content = document.querySelector(".content");
+    document.addEventListener("DOMContentLoaded", function() {
+        var loader = document.querySelector(".loader");
+        var content = document.querySelector(".content");
 
-            // Show the loader on page refresh
-            if (performance.navigation.type === 1) {
-                loader.style.display = "flex";
-                content.style.display = "none";
-            } else {
-                loader.style.display = "none";
-                content.style.display = "block";
-            }
+        // Show the loader on page refresh
+        if (performance.navigation.type === 1) {
+            loader.style.display = "flex";
+            content.style.display = "none";
+        } else {
+            loader.style.display = "none";
+            content.style.display = "block";
+        }
 
-            // Hide the loader and show the content after a delay
-            setTimeout(function () {
-                loader.style.display = "none";
-                content.style.display = "block";
-            }, 2000); // Adjusted delay time to 2000 milliseconds (2 seconds)
-        });
+        // Hide the loader and show the content after a delay
+        setTimeout(function() {
+            loader.style.display = "none";
+            content.style.display = "block";
+        }, 4750); // Adjusted delay time to 2000 milliseconds (2 seconds)
+    });
     </script>
 
 </head>
@@ -150,33 +150,34 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script>
-        function togglePassword(inputId) {
-            const passwordInput = document.getElementById(inputId);
-            const passwordIcon = passwordInput.nextElementSibling.querySelector('i');
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                passwordIcon.classList.remove('fa-eye');
-                passwordIcon.classList.add('fa-eye-slash');
-            } else {
-                passwordInput.type = 'password';
-                passwordIcon.classList.remove('fa-eye-slash');
-                passwordIcon.classList.add('fa-eye');
-            }
+    function togglePassword(inputId) {
+        const passwordInput = document.getElementById(inputId);
+        const passwordIcon = passwordInput.nextElementSibling.querySelector('i');
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            passwordIcon.classList.remove('fa-eye');
+            passwordIcon.classList.add('fa-eye-slash');
+        } else {
+            passwordInput.type = 'password';
+            passwordIcon.classList.remove('fa-eye-slash');
+            passwordIcon.classList.add('fa-eye');
         }
-        function checkPasswordMatch() {
-            var passwordInput = document.getElementById('password-register');
-            var confirmPasswordInput = document.getElementById('confirm-password-register');
-            var passwordMatchMessage = document.getElementById('password-match-message');
-            var registerButton = document.getElementById('register-button');
+    }
 
-            if (passwordInput.value !== confirmPasswordInput.value) {
-                passwordMatchMessage.textContent = "Passwords do not match";
-                registerButton.disabled = true;
-            } else {
-                passwordMatchMessage.textContent = "";
-                registerButton.disabled = false;
-            }
+    function checkPasswordMatch() {
+        var passwordInput = document.getElementById('password-register');
+        var confirmPasswordInput = document.getElementById('confirm-password-register');
+        var passwordMatchMessage = document.getElementById('password-match-message');
+        var registerButton = document.getElementById('register-button');
+
+        if (passwordInput.value !== confirmPasswordInput.value) {
+            passwordMatchMessage.textContent = "Passwords do not match";
+            registerButton.disabled = true;
+        } else {
+            passwordMatchMessage.textContent = "";
+            registerButton.disabled = false;
         }
+    }
     </script>
 
 </body>
