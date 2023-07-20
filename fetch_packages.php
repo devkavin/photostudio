@@ -23,4 +23,6 @@ try {
     echo "Query failed: " . $e->getMessage();
 }
 
+// Close the database connection (optional since PDO automatically closes the connection when the script ends)
+// 2
 $conn = null;
